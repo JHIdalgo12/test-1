@@ -1,16 +1,17 @@
 body {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     background: #f4f4f4;
     padding: 20px;
+    margin: 0;
 }
-
+* { box-sizing: border-box; }
 h1, h2 {
     text-align: center;
+    color: #333;
 }
-
 .btn {
     display: block;
-    margin: 10px auto;
+    margin: 15px auto;
     background: #2ecc71;
     border: none;
     color: white;
@@ -18,9 +19,11 @@ h1, h2 {
     padding: 12px;
     cursor: pointer;
     border-radius: 6px;
+    transition: 0.2s ease;
 }
-
-
+.btn:hover { background: #27ae60; }
+.btnRojo { background: #e74c3c; }
+.btnRojo:hover { background: #c0392b; }
 #contenedorForm {
     max-width: 350px;
     margin: 20px auto;
@@ -29,38 +32,50 @@ h1, h2 {
     border-radius: 8px;
     box-shadow: 0 0 7px rgba(0,0,0,0.2);
 }
-
-label {
-    display: block;
-    margin-top: 10px;
-}
-
-input {
+label { display: block; margin-top: 12px; }
+input, select {
     width: 100%;
-    padding: 7px;
+    padding: 8px;
     margin-top: 5px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 15px;
 }
-
+input:focus, select:focus { outline: none; border-color: #3498db; }
 .btnGuardar {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 18px;
     background-color: #3498db;
     border: none;
     color: white;
     padding: 10px;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 16px;
 }
-
-
-
+.btnGuardar:hover { background: #2980b9; }
 .moneda {
     max-width: 350px;
-    margin: 10px auto;
+    margin: 15px auto;
     padding: 15px;
     background: white;
     border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);
 }
-
-
+.moneda p { margin: 6px 0; color: #444; font-size: 15px; }
+.btnEliminar, .btnVendida {
+    margin-top: 12px;
+    width: 100%;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+.btnEliminar { background: #e74c3c; }
+.btnEliminar:hover { background: #c0392b; }
+.btnVendida { background: #f39c12; }
+.btnVendida:hover { background: #d35400; }
+.moneda.vendida { opacity: 0.6; text-decoration: line-through; }

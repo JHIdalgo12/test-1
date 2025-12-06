@@ -1,0 +1,12 @@
+[
+    { "pais": "Argentina", "anio": 2020, "edicion": "Premium", "material": "Oro", "valor": 1000 },
+    { "pais": "EEUU", "anio": 2018, "edicion": "Limited", "material": "Plata", "valor": 500 },
+    { "pais": "Canadá", "anio": 2015, "edicion": "Standard", "material": "Cobre", "valor": 100 },
+    { "pais": "España", "anio": 2010, "edicion": "Basic", "material": "Níquel", "valor": 50 },
+    { "pais": "Alemania", "anio": 2012, "edicion": "Premium", "material": "Oro", "valor": 800 },
+    { "pais": "Francia", "anio": 2016, "edicion": "Limited", "material": "Plata", "valor": 400 },
+    { "pais": "Italia", "anio": 2019, "edicion": "Standard", "material": "Cobre", "valor": 120 },
+    { "pais": "Brasil", "anio": 2017, "edicion": "Basic", "material": "Níquel", "valor": 60 },
+    { "pais": "Japón", "anio": 2014, "edicion": "Premium", "material": "Oro", "valor": 900 },
+    { "pais": "China", "anio": 2013, "edicion": "Limited", "material": "Plata", "valor": 450 }
+]

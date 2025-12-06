@@ -5,36 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coleccionador de Monedas</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script defer src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script defer src="js/Script.js"></script>
+    <script defer src="js/UI.js"></script>
 </head>
 <body>
-    <h1>Coleccionador de Monedas</h1>
-    <button id="btnMostrarForm" class="btn">Agregar Moneda</button>
-    <div id="contenedorForm" style="display:none;">
-        <form id="formMoneda">
-            <h2>Nueva Moneda</h2>
 
-            <label>País:</label>
-            <input type="text" id="pais">
+<h1>Coleccionador de Monedas</h1>
 
-            <label>Año:</label>
-            <input type="number" id="anio" >
+<button id="btnMostrarForm" class="btn">Agregar Moneda</button>
+<button id="btnVaciar" class="btn btnRojo">Vaciar Colección</button>
 
-            <label>Edición:</label>
-            <input type="text" id="edicion">
+<div id="contenedorForm" style="display:none;">
+    <form id="formMoneda">
+        <h2>Nueva Moneda</h2>
+        <label>País:</label>
+        <input type="text" id="pais" required>
+        <label>Año:</label>
+        <input type="number" id="anio" required>
+        <label>Edición:</label>
+        <select id="edicion">
+            <option value="">Seleccione una opción</option>
+            <option value="Basic">Basic</option>
+            <option value="Standard">Standard</option>
+            <option value="Premium">Premium</option>
+            <option value="Limited">Limited</option>
+        </select>
+        <label>Material:</label>
+        <input type="text" id="material">
+        <label>Valor ($):</label>
+        <input type="number" id="valor" min="0" required>
+        <button type="submit" class="btnGuardar">Guardar Moneda</button>
+    </form>
+</div>
 
-            <label>Material:</label>
-            <input type="text" id="material">
+<h2>Monedas Coleccionadas</h2>
+<div id="listaMonedas"></div>
 
-            <label>Valor en $:</label>
-            <input type="number" id="valor" >
-
-            <button type="submit" class="btnGuardar">Guardar Moneda</button>
-        </form>
-    </div>
-
-    <h2>Monedas Coleccionadas</h2>
-    <div id="listaMonedas"></div>
+<div id="resumenFinanciero" style="max-width:350px; margin:20px auto; text-align:center;">
+    <p>Inversión total: $<span id="inversionTotal">0</span></p>
+    <p>Inversión de monedas vendidas: $<span id="inversionVendidas">0</span></p>
+    <p>Total valor de monedas vendidas: $<span id="totalVendidas">0</span></p>
+    <p>Ganancia total: $<span id="gananciaTotal">0</span></p>
+</div>
 
 </body>
 </html>
