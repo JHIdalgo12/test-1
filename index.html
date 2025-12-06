@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script defer src="js/Script.js"></script>
-    <script defer src="js/UI.js"></script>
+    <script defer src="js/ui.js"></script>
 </head>
 <body>
 
@@ -19,10 +19,13 @@
 <div id="contenedorForm" style="display:none;">
     <form id="formMoneda">
         <h2>Nueva Moneda</h2>
+
         <label>País:</label>
-        <input type="text" id="pais" required>
+        <input type="text" id="pais">
+
         <label>Año:</label>
-        <input type="number" id="anio" required>
+        <input type="number" id="anio">
+
         <label>Edición:</label>
         <select id="edicion">
             <option value="">Seleccione una opción</option>
@@ -31,10 +34,13 @@
             <option value="Premium">Premium</option>
             <option value="Limited">Limited</option>
         </select>
+
         <label>Material:</label>
         <input type="text" id="material">
+
         <label>Valor ($):</label>
-        <input type="number" id="valor" min="0" required>
+        <input type="number" id="valor">
+
         <button type="submit" class="btnGuardar">Guardar Moneda</button>
     </form>
 </div>
@@ -42,7 +48,7 @@
 <h2>Monedas Coleccionadas</h2>
 <div id="listaMonedas"></div>
 
-<div id="resumenFinanciero" style="max-width:350px; margin:20px auto; text-align:center;">
+<div id="resumenFinanciero">
     <p>Inversión total: $<span id="inversionTotal">0</span></p>
     <p>Inversión de monedas vendidas: $<span id="inversionVendidas">0</span></p>
     <p>Total valor de monedas vendidas: $<span id="totalVendidas">0</span></p>

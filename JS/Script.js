@@ -1,45 +1,72 @@
-let coleccion = [];
+let coleccionMonedas = [];
 
-function guardarMonedas() { 
-    localStorage.setItem("monedas", JSON.stringify(coleccion)); 
+function guardarColeccion() {
+    localStorage.setItem("monedas", JSON.stringify(coleccionMonedas));
 }
 
-function crearMoneda(pais, anio, edicion, material, valor) {
-    return { id: Date.now() + Math.random(), pais, anio, edicion, material, valor, vendida: false, valorVenta: 0 };
+function generarMoneda(pais, anio, edicion, material, valor) {
+    return {
+        id: Date.now() + Math.random(),
+        pais,
+        anio,
+        edicion,
+        material,
+        valor,
+        vendida: false,
+        valorVenta: 0
+    };
 }
 
-async function cargarMonedasPrecargadas() {
+function verificarMoneda(pais, anio, valor) {
+    if (!pais.trim() || !anio.trim()) return "País y año obligatorios";
+    if (anio < 1000 || anio > 2050) return "Año inválido";
+    if (valor < 0) return "Valor negativo no permitido";
+    return null;
+}
+
+function eliminarMoneda(id) {
+    coleccionMonedas = coleccionMonedas.filter(moneda => moneda.id !== id);
+    guardarColeccion();
+}
+
+async function cargarMonedasDesdeJSON() {
     try {
-        const res = await fetch('Monedas/monedas.json');
-        if (!res.ok) throw new Error();
-        const data = await res.json();
-        coleccion = data.map(m => ({
-            ...m,
+        const respuesta = await fetch("Monedas/monedas.json");
+        const datosMonedas = await respuesta.json();
+
+        coleccionMonedas = datosMonedas.map(moneda => ({
+            ...moneda,
             id: Date.now() + Math.random(),
             vendida: false,
             valorVenta: 0
         }));
-        guardarMonedas();
-    } catch (err) { console.error(err); }
+
+        guardarColeccion();
+    } catch (error) {
+        console.error("No se pudo cargar monedas.json");
+    }
 }
 
 async function inicializarColeccion() {
-    if (localStorage.getItem("monedas")) {
-        const { isConfirmed } = await Swal.fire({
-            title: 'Datos existentes',
-            text: 'Se encontraron datos preexistentes en el local storage. ¿Desea continuar con ellos?',
-            icon: 'question',
+    const coleccionGuardada = localStorage.getItem("monedas");
+
+    if (coleccionGuardada) {
+        const decision = await Swal.fire({
+            title: "Datos existentes",
+            text: "¿Desea mantener la colección guardada?",
+            icon: "question",
             showCancelButton: true,
-            confirmButtonText: 'Sí',
-            cancelButtonText: 'No'
+            confirmButtonText: "Sí",
+            cancelButtonText: "No"
         });
-        if (isConfirmed) {
-            coleccion = JSON.parse(localStorage.getItem("monedas"));
+
+        if (decision.isConfirmed) {
+            coleccionMonedas = JSON.parse(coleccionGuardada);
         } else {
             localStorage.removeItem("monedas");
-            await cargarMonedasPrecargadas();
+            await cargarMonedasDesdeJSON();
         }
     } else {
-        await cargarMonedasPrecargadas();
+        await cargarMonedasDesdeJSON();
     }
 }
